@@ -17,6 +17,7 @@
   <script>
     // Retrieve Mapbox access token from environment variable
     mapboxgl.accessToken = "pk.eyJ1Ijoic3RnLXRha2VzaGliYWJvdXNhaSIsImEiOiJjbDExcTR2YWkwM2g5M2RvMmR5eTBic2k0In0.CZ-saomvw5geRfo0YaQJ4A";
+
     // Check if the access token is available
     if (!mapboxgl.accessToken) {
       console.error('Mapbox access token not provided. Please set the MAPBOX_ACCESS_TOKEN environment variable.');
@@ -27,10 +28,11 @@
       container: 'map',
       style: 'mapbox://styles/mapbox/satellite-v9',
       center: [-74.5, 40],
-      zoom: 9
+      zoom: 9,
+      trackUserLocation: true  // Set to true to automatically request the user's location
     });
 
-    // Get the user's location once the map has loaded
+    // The 'load' event is triggered when the map is fully loaded
     map.on('load', function () {
       // Check if the Geolocation API is available
       if ('geolocation' in navigator) {
